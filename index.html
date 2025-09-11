@@ -16,7 +16,7 @@
     <meta property="og:title" content="دليل أدوات التحقيق الجنائي الرقمي" />
     <meta property="og:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourwebsite.com/" />
+    <meta property="og:url" content="https://digitalforensicstools711.netlify.app/" />
     <meta property="og:image" content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools" />
     <meta property="og:locale" content="ar_AR" />
     <meta property="og:site_name" content="Digital Forensics Guide" />
@@ -34,7 +34,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourwebsite.com/" />
+    <link rel="canonical" href="https://digitalforensicstools711.netlify.app/" />
 
  
     <!-- Fonts -->
@@ -77,7 +77,7 @@
         "@type": "WebSite",
         "name": "دليل أدوات التحقيق الجنائي الرقمي",
         "alternateName": "Digital Forensics Tools Guide",
-        "url": "https://digital-forensics-guide.com",
+        "url": "https://digitalforensicstools711.netlify.app",
         "description": "دليل شامل لأدوات التحقيق الجنائي الرقمي من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي مع روابط التحميل والشروحات المفصلة.",
         "inLanguage": ["ar", "en"],
         "audience": {
@@ -88,7 +88,7 @@
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://digital-forensics-guide.com/?search={search_term_string}"
+            "urlTemplate": "https://digitalforensicstools711.netlify.app/?search={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }
@@ -96,6 +96,16 @@
     </script>
   </head>
   <body>
+    <!-- Modal container -->
+<div id="tool-modal" class="modal1">
+  <div class="modal-content1">
+    <span class="close-btn1">&times;</span>
+    <div id="modal-body">
+      <!-- التفاصيل ستُحقن هنا عبر JS -->
+    </div>
+  </div>
+</div>
+
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
       <div class="loading-content">
@@ -313,13 +323,14 @@
             <div class="tools-grid" id="featured-tools">
                 <!-- Featured tools will be dynamically loaded here -->
             </div>
-            
-            <div class="tools-pagination">
+            <div class="load-more-container">
                 <button class="load-more-btn" onclick="loadMoreTools()">
                     <i class="fas fa-plus"></i>
                     عرض المزيد من الأدوات
                 </button>
             </div>
+
+            
         </div>
     </section>
 
@@ -441,27 +452,26 @@
                 <div class="resource-category">
                     <h3><i class="fas fa-video"></i> دورات تدريبية</h3>
                     <ul class="resource-list">
-                        <li><a href="#" target="_blank">دورة Autopsy الشاملة</a></li>
-                        <li><a href="#" target="_blank">تعلم Volatility Framework</a></li>
-                        <li><a href="#" target="_blank">تحليل الأجهزة المحمولة</a></li>
+                        <li><a href="https://youtu.be/fEqx0MeCCHg?si=HRP6RpAiZaZU1irU" target="_blank">دورة Autopsy الشاملة</a></li>
+                        <li><a href="https://youtube.com/playlist?list=PLqM63j87R5p5PxI9mrEDFN3NsZJkfwq14&si=ZYcaO4FmZrnNd9RB" target="_blank">تعلم Volatility Framework</a></li>
+                        <li><a href="https://www.alarabimag.com/books/6755-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%85%D9%84-%D9%85%D8%B9-%D8%A7%D9%84%D8%AC%D9%87%D8%A7%D8%B2-%D8%A7%D9%84%D9%85%D8%AD%D9%85%D9%88%D9%84.html?utm_source=chatgpt.com" target="_blank">تحليل الأجهزة المحمولة</a></li>
                     </ul>
                 </div>
                 
                 <div class="resource-category">
                     <h3><i class="fas fa-certificate"></i> شهادات احترافية</h3>
                     <ul class="resource-list">
-                        <li><a href="#" target="_blank">CHFI - Computer Hacking Forensic Investigator</a></li>
-                        <li><a href="#" target="_blank">GCFA - GIAC Certified Forensic Analyst</a></li>
-                        <li><a href="#" target="_blank">EnCE - EnCase Certified Examiner</a></li>
+                        <li><a href="https://t.me/pdfBooks_programming/706" target="_blank">CHFI - Computer Hacking Forensic Investigator</a></li>
+                        <li><a href="https://t.me/NusurFile/202" target="_blank">GCFA - GIAC Certified Forensic Analyst</a></li>
+                        
                     </ul>
                 </div>
                 
                 <div class="resource-category">
                     <h3><i class="fas fa-users"></i> مجتمعات</h3>
                     <ul class="resource-list">
-                        <li><a href="#" target="_blank">مجتمع الأمن السيبراني العربي</a></li>
-                        <li><a href="#" target="_blank">منتدى التحقيق الجنائي الرقمي</a></li>
-                        <li><a href="#" target="_blank">قناة Telegram للمتخصصين</a></li>
+                       
+                        <li><a href="https://t.me/SyberSc71" target="_blank">قناة Telegram للمتخصصين</a></li>
                     </ul>
                 </div>
             </div>

@@ -655,28 +655,27 @@ function hideLoadMoreButton() {
 }
 
 // دالة عرض المزيد - مُصححة
-function loadMoreTools() {
-    if (isLoading || !allFilteredTools || allFilteredTools.length === 0) return;
+window.loadMoreTools = function() {
+    if (isLoading) return;
     
     isLoading = true;
-    const loadBtn = document.querySelector('.load-more-btn');
+    currentPage++;
     
+    // Show loading state
+    const loadBtn = document.querySelector('.load-more-btn');
     if (loadBtn) {
         loadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
-        loadBtn.disabled = true;
     }
     
     setTimeout(() => {
-        currentPage++;
-        displayFilteredTools();
-        
+        filterAndDisplayTools();
         isLoading = false;
+        
         if (loadBtn) {
             loadBtn.innerHTML = '<i class="fas fa-plus"></i> عرض المزيد من الأدوات';
-            loadBtn.disabled = false;
         }
-    }, 800);
-}
+    }, 1000);
+};
 
 // دالة استكشاف التصنيف - مُصححة
 function exploreCategory(categoryId) {
@@ -717,13 +716,47 @@ function exploreAllCategories() {
 window.exploreAllCategories = exploreAllCategories;
 
 // عرض تفاصيل الأداة
+// افترض أن لديك كائنات الأدوات في forensicsTools
+
 function showToolDetails(toolId) {
     const tool = forensicsTools.find(t => t.id === toolId);
     if (!tool) return;
-    
-    // يمكن تطوير نافذة منبثقة أو صفحة منفصلة
-    alert(`تفاصيل ${tool.name}:\n\n${tool.description}\n\nالميزات:\n• ${(tool.features || []).join('\n• ')}`);
+
+    const modal = document.getElementById('tool-modal');
+    const modalBody = document.getElementById('modal-body');
+
+    modalBody.innerHTML = `
+       <h2 style="color:black; text-align:center;">${tool.name}</h2>
+
+        <img src="${tool.image}" alt="${tool.name}" style="width:100%; max-height:200px; object-fit:contain; border-radius:8px; margin-bottom:15px;">
+        <p style="color:black">${tool.description}</p>
+        <div style="color:black">
+            <strong style="color:black">النوع:</strong> ${tool.type}<br>
+            <strong style="color:black">المنصات:</strong> ${tool.platforms.join(', ')}<br>
+            <strong style="color:black">التقييم:</strong> ⭐ ${tool.rating || 'N/A'}<br>
+            <strong style="color:black">السعر:</strong> ${tool.price}
+        </div>
+        <div style="margin-top:15px;">
+            <a href="${tool.downloadUrl}" target="_blank" class="download-btn primary">
+                <i class="fas fa-download"></i> تحميل
+            </a>
+        </div>
+    `;
+
+    modal.style.display = 'block';
+
+    // إغلاق عند الضغط على ×
+    const closeBtn = modal.querySelector('.close-btn');
+    closeBtn.onclick = () => { modal.style.display = 'none'; }
+
+    // إغلاق عند الضغط خارج الصندوق
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
 }
+
 
 // حساب عدد الأدوات لكل تصنيف
 function getToolsCountByCategory(categoryId) {
@@ -822,7 +855,7 @@ window.scrollToSection = function(sectionId) {
 
 // تصدير الدوال للاستخدام العام
 window.exploreCategory = exploreCategory;
-window.showToolDetails = showToolDetails;
+
 window.loadMoreTools = loadMoreTools;
 window.selectSuggestion = selectSuggestion;
 window.clearAllFilters = clearAllFilters;

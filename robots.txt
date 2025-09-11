@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://digital-forensics-guide.com/sitemap.xml
+Sitemap: https://digitalforensicstools711.netlify.app/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
