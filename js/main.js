@@ -367,7 +367,7 @@ function loadCategories() {
                         </div>
                         
                         <div class="category-image">
-                            <img src="${category.image}" alt="${category.name}" loading="lazy">
+                            <img src="${category.image}" alt="${category.name}" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
                         </div>
                     </div>
                 </div>
@@ -413,7 +413,7 @@ function displayToolsInGrid(tools, container) {
         <div class="tool-card fade-in" data-tool="${tool.id}" style="animation-delay: ${index * 0.1}s">
             <div class="tool-header">
                 <div class="tool-image">
-                    <img src="${tool.image}" alt="${tool.name}" loading="lazy">
+                    <img src="${tool.image}" alt="${tool.name}" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
                     <div class="tool-overlay">
                         <div class="tool-type ${getTypeClass(tool.type)}">
                             ${tool.type}
@@ -546,6 +546,13 @@ function displayFilteredTools() {
     
     // عرض الأدوات
     displayToolsInGrid(toolsToDisplay, toolsGrid);
+    // ✅ إظهار الكروت مباشرة بعد إضافتها (حل مشكلة الشاشة السوداء)
+const cards = toolsGrid.querySelectorAll('.tool-card');
+cards.forEach(card => {
+    card.style.opacity = '1';
+    card.style.transform = 'none';
+});
+
     
     // تحديث عداد النتائج
     updateResultsCounter(allFilteredTools.length);
@@ -619,7 +626,7 @@ function updateResultsCounter(count) {
         } else {
             counter.textContent = `تم العثور على ${count} أداة`;
             counter.style.background = 'rgba(0, 255, 136, 0.1)';
-            counter.style.color = '#333';
+            counter.style.color = '#3a0fe7ff';
         }
     }
 }
@@ -689,6 +696,25 @@ function exploreCategory(categoryId) {
     // التمرير إلى قسم الأدوات
     scrollToSection('tools');
 }
+// ✅ دالة استعراض جميع التصنيفات
+function exploreAllCategories() {
+    // إعادة تعيين الفلتر
+    currentFilter.category = '';
+    currentPage = 1;
+
+    // إعادة قيمة القائمة المنسدلة
+    const categorySelect = document.getElementById('category-filter');
+    if (categorySelect) {
+        categorySelect.value = '';
+    }
+
+    // عرض جميع الأدوات
+    filterAndDisplayTools();
+
+    // التمرير إلى قسم الأدوات
+    scrollToSection('tools');
+}
+window.exploreAllCategories = exploreAllCategories;
 
 // عرض تفاصيل الأداة
 function showToolDetails(toolId) {

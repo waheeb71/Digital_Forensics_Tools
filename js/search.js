@@ -407,20 +407,31 @@ class AdvancedSearch {
     }
 
     // Select search suggestion
-    selectSuggestion(name, id, isCategory = false) {
-        const searchInput = document.getElementById('global-search');
-        if (searchInput) {
-            searchInput.value = name;
-        }
+   // تحديد اقتراح البحث عند الضغط عليه
+selectSuggestion(name, id, isCategory = false) {
+    const searchInput = document.getElementById('global-search');
+    if (!searchInput) return;
 
-        if (isCategory) {
-            window.exploreCategory(id);
-        } else {
-            window.showToolDetails(id);
-        }
+    // 1️⃣ ضع الاسم في خانة البحث
+    searchInput.value = name;
 
-        this.hideSearchSuggestions();
+    // 2️⃣ نفّذ البحث بعد تحديث القيمة مباشرة
+    setTimeout(() => {
+        const results = this.performSearch(name);
+        if (results.length === 0) {
+            this.showNoResults(name);
+        }
+    }, 50); // تأخير بسيط لضمان تحديث DOM
+
+    // 3️⃣ إذا كان اقتراح تصنيف، اعرضه
+    if (isCategory && typeof window.exploreCategory === 'function') {
+        window.exploreCategory(id);
     }
+
+    // 4️⃣ إخفاء قائمة الاقتراحات
+    this.hideSearchSuggestions();
+}
+
 
     // Search alternative query
     searchAlternative(query) {
@@ -489,7 +500,7 @@ class AdvancedSearch {
                 
                 <div class="tool-header">
                     <div class="tool-image">
-                        <img src="${tool.image}" alt="${tool.name}" loading="lazy">
+                        <img src="${tool.image}" alt="${tool.name}" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
                         <div class="tool-overlay">
                             <div class="tool-type ${this.getTypeClass(tool.type)}">
                                 ${tool.type}
@@ -613,19 +624,7 @@ class AdvancedSearch {
     }
 
     // Initialize voice search
-    initializeVoiceSearch() {
-        const voiceButton = document.createElement('button');
-        voiceButton.className = 'voice-search-btn';
-        voiceButton.innerHTML = '<i class="fas fa-microphone"></i>';
-        voiceButton.title = 'البحث الصوتي';
-        
-        const searchBox = document.querySelector('.search-box');
-        if (searchBox) {
-            searchBox.appendChild(voiceButton);
-            voiceButton.addEventListener('click', () => this.startVoiceRecognition());
-        }
-    }
-
+   
     // Start voice recognition
     startVoiceRecognition() {
         const recognition = new webkitSpeechRecognition();

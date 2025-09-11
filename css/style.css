@@ -514,7 +514,7 @@ a:hover {
     box-shadow: var(--shadow-cyber);
     overflow: hidden;
 }
-#toolsGrid p {
+.tools-grid p {
     color: var(--primary-text);
 }
 
@@ -712,11 +712,13 @@ a:hover {
 .search-icon {
     position: absolute;
     right: var(--spacing-lg);
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     color: var(--cyber-green);
     font-size: 1.2rem;
 }
+
+
 
 .search-filters {
     display: flex;

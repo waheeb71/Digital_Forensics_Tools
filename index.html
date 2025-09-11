@@ -4,30 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>دليل أدوات التحقيق الجنائي الرقمي | Digital Forensics Tools Guide</title>
-    <meta
-      name="description"
-      content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي الرقمي مع روابط التحميل والشروحات المفصلة."
-    />
-    <meta
-      name="keywords"
-      content="أدوات التحقيق الجنائي الرقمي, Digital Forensics, تحليل البيانات الرقمية, أمن المعلومات, تحليل الجرائم الإلكترونية"
-    />
+     <meta name="description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي الرقمي مع روابط التحميل والشروحات المفصلة." />
+    <meta name="keywords" content="أدوات التحقيق الجنائي الرقمي, Digital Forensics, تحليل البيانات الرقمية, أمن المعلومات, تحليل الجرائم الإلكترونية" />
     <meta name="author" content="Digital Forensics Guide" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Arabic" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="7 days" />
 
-    <!-- Open Graph Tags -->
+    <!-- Open Graph Tags (Facebook, LinkedIn) -->
     <meta property="og:title" content="دليل أدوات التحقيق الجنائي الرقمي" />
     <meta property="og:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools"
-    />
+    <meta property="og:url" content="https://yourwebsite.com/" />
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="Digital Forensics Guide" />
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="دليل أدوات التحقيق الجنائي الرقمي" />
     <meta name="twitter:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف" />
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools" />
+    <meta name="twitter:site" content="@YourTwitterHandle" />
+    <meta name="twitter:creator" content="@YourTwitterHandle" />
 
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/" />
+
+ 
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
@@ -238,12 +247,12 @@
                 <div class="search-filters">
                     <select id="category-filter" class="filter-select">
                         <option value="">جميع التصنيفات</option>
-                        <option value="computer">تحليل الحاسوب</option>
-                        <option value="mobile">الأجهزة المحمولة</option>
-                        <option value="network">تحليل الشبكة</option>
-                        <option value="memory">تحليل الذاكرة</option>
-                        <option value="cloud">الحوسبة السحابية</option>
-                        <option value="blockchain">البلوك تشين</option>
+                        <option value="computer-forensics">تحليل الحاسوب</option>
+                        <option value="mobile-forensics">الأجهزة المحمولة</option>
+                        <option value="network-forensics">تحليل الشبكة</option>
+                        <option value="memory-forensics">تحليل الذاكرة</option>
+                        <option value="cloud-forensics">الحوسبة السحابية</option>
+                        <option value="blockchain-forensics">البلوك تشين</option>
                     </select>
                     
                     <select id="license-filter" class="filter-select">
@@ -276,6 +285,10 @@
                 <p class="section-subtitle">
                     استكشف مجالات التحقيق الجنائي الرقمي المختلفة
                 </p>
+                <button class="explore-btn all-btn" onclick="exploreAllCategories()">
+    <i class="fas fa-th-large"></i>
+    جميع التصنيفات
+  </button>
             </div>
             
             <div class="categories-grid" id="categories-grid">
@@ -485,18 +498,19 @@
                 <div class="footer-section">
                     <h4>تواصل معنا</h4>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/WAT4F" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="https://x.com/wa__cys" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/waheeb71" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/waheeb71" class="social-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <div class="copyright">
-                    <p>&copy; 2024 دليل التحقيق الجنائي الرقمي. جميع الحقوق محفوظة.</p>
-                </div>
+               <div class="copyright" dir="rtl">
+    <p>&copy; 2025 دليل التحقيق الجنائي الرقمي. جميع الحقوق محفوظة لدى منصة Cyber Code.</p>
+</div>
+
                 <div class="footer-tech">
                     <span>مدعوم بأحدث التقنيات</span>
                     <i class="fas fa-code"></i>
