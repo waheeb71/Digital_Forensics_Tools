@@ -1,0 +1,69 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://digital-forensics-guide.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Allow access to CSS, JS, and Images
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /images/
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block access to development files
+Disallow: /dev/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.tmp
+Disallow: /*.log
+Disallow: /backup/
+
+# Analytics and tracking
+Allow: /analytics/
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Archive crawlers
+User-agent: ia_archiver
+Allow: /
+
+# SEO tools
+User-agent: SemrushBot
+Crawl-delay: 2
+
+User-agent: AhrefsBot
+Crawl-delay: 2
+
+User-agent: MJ12bot
+Crawl-delay: 3
+
+# Block spam bots
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

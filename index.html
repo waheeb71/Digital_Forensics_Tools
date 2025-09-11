@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل أدوات التحقيق الجنائي الرقمي | Digital Forensics Tools Guide</title>
+    <meta name="description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي الرقمي مع روابط التحميل والشروحات المفصلة.">
+    <meta name="keywords" content="أدوات التحقيق الجنائي الرقمي, Digital Forensics, تحليل البيانات الرقمية, أمن المعلومات, تحليل الجرائم الإلكترونية">
+    <meta name="author" content="Digital Forensics Guide">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="دليل أدوات التحقيق الجنائي الرقمي">
+    <meta property="og:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="دليل أدوات التحقيق الجنائي الرقمي">
+    <meta name="twitter:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUExQTFBIi8+CjxwYXRoIGQ9Ik0xNiA4TDIwIDEyTDE2IDE2TDEyIDEyTDE2IDhaIiBmaWxsPSIjMDBGRjg4Ii8+CjxwYXRoIGQ9Ik0xNiAxNkwyMCAyMEwxNiAyNEwxMiAyMEwxNiAxNloiIGZpbGw9IiMwMEZGODgiLz4KPC9zdmc+">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00ff88">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Digital Forensics Guide">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "دليل أدوات التحقيق الجنائي الرقمي",
+        "alternateName": "Digital Forensics Tools Guide",
+        "url": "https://digital-forensics-guide.com",
+        "description": "دليل شامل لأدوات التحقيق الجنائي الرقمي من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي مع روابط التحميل والشروحات المفصلة.",
+        "inLanguage": ["ar", "en"],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "cybersecurity professionals, digital forensics experts, students"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://digital-forensics-guide.com/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Digital Forensics Guide",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://digital-forensics-guide.com/assets/logo.png"
+            }
+        },
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "أدوات التحقيق الجنائي الرقمي",
+            "description": "قائمة شاملة بأهم أدوات التحقيق الجنائي الرقمي",
+            "numberOfItems": 20,
+            "itemListElement": [
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "Autopsy",
+                    "applicationCategory": "SecurityApplication",
+                    "operatingSystem": ["Windows", "Linux", "macOS"],
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                },
+                {
+                    "@type": "SoftwareApplication", 
+                    "name": "Wireshark",
+                    "applicationCategory": "NetworkApplication",
+                    "operatingSystem": ["Windows", "Linux", "macOS"],
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-search cyber-icon"></i>
+                <div class="loading-text">جاري التحميل</div>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-shield-alt cyber-icon" style="color: red;"></i>
+                <span>دليل التحقيق الجنائي الرقمي</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    الرئيسية
+                </a>
+                <a href="#categories" class="nav-link" data-section="categories">
+                    <i class="fas fa-layer-group"></i>
+                    التصنيفات
+                </a>
+                <a href="#tools" class="nav-link" data-section="tools">
+                    <i class="fas fa-tools"></i>
+                    الأدوات
+                </a>
+                <a href="#guide" class="nav-link" data-section="guide">
+                    <i class="fas fa-book"></i>
+                    الدليل
+                </a>
+                <a href="#resources" class="nav-link" data-section="resources">
+                    <i class="fas fa-download"></i>
+                    الموارد
+                </a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg">
+            <div class="matrix-rain"></div>
+            <div class="cyber-grid"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span  data-text="دليل أدوات التحقيق الجنائي الرقمي" style="color: red;">دليل أدوات التحقيق الجنائي الرقمي</span>
+                </h1>
+                <p class="hero-subtitle">
+                    دليلك الشامل للتحقيق الجنائي الرقمي من المبتدأ إلى الاحتراف
+                    <br>
+                    استكشف أقوى الأدوات والتقنيات المتقدمة في عالم الأمن السيبراني
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="150">0</div>
+                        <div class="stat-label">أداة متخصصة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="12">0</div>
+                        <div class="stat-label">تصنيف رئيسي</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">دليل شامل</div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <button class="cta-button primary" onclick="scrollToSection('tools')">
+                        <i class="fas fa-rocket"></i>
+                        استكشف الأدوات
+                    </button>
+                    <button class="cta-button secondary" onclick="scrollToSection('guide')">
+                        <i class="fas fa-book-open"></i>
+                        ابدأ التعلم
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="cyber-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <div class="terminal-title">Digital Forensics Toolkit</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">root@forensics:~$</span>
+                            <span class="command typing">autopsy --analyze evidence.dd</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">[+] تحليل الأدلة الرقمية جاري...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output success">[✓] تم العثور على 847 ملف</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output warning">[!] تم اكتشاف بيانات محذوفة</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="cursor">_</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Search -->
+    <section class="quick-search">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="global-search" placeholder="ابحث عن أداة أو تصنيف...">
+                    <div class="search-suggestions" id="search-suggestions"></div>
+                </div>
+                
+                <div class="search-filters">
+                    <select id="category-filter" class="filter-select">
+                        <option value="">جميع التصنيفات</option>
+                        <option value="computer">تحليل الحاسوب</option>
+                        <option value="mobile">الأجهزة المحمولة</option>
+                        <option value="network">تحليل الشبكة</option>
+                        <option value="memory">تحليل الذاكرة</option>
+                        <option value="cloud">الحوسبة السحابية</option>
+                        <option value="blockchain">البلوك تشين</option>
+                    </select>
+                    
+                    <select id="license-filter" class="filter-select">
+                        <option value="">جميع التراخيص</option>
+                        <option value="free">مجاني</option>
+                        <option value="commercial">تجاري</option>
+                        <option value="open-source">مفتوح المصدر</option>
+                    </select>
+                    
+                    <select id="platform-filter" class="filter-select">
+                        <option value="">جميع المنصات</option>
+                        <option value="windows">Windows</option>
+                        <option value="linux">Linux</option>
+                        <option value="macos">macOS</option>
+                        <option value="web">Web</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Overview -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-layer-group cyber-icon"></i>
+                    التصنيفات الرئيسية
+                </h2>
+                <p class="section-subtitle">
+                    استكشف مجالات التحقيق الجنائي الرقمي المختلفة
+                </p>
+            </div>
+            
+            <div class="categories-grid" id="categories-grid">
+                <!-- Categories will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tools -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-star cyber-icon"></i>
+                    الأدوات المميزة
+                </h2>
+                <p class="section-subtitle">
+                    أقوى وأشهر أدوات التحقيق الجنائي الرقمي
+                </p>
+            </div>
+            
+            <div class="tools-grid" id="featured-tools">
+                <!-- Featured tools will be dynamically loaded here -->
+            </div>
+            
+            <div class="tools-pagination">
+                <button class="load-more-btn" onclick="loadMoreTools()">
+                    <i class="fas fa-plus"></i>
+                    عرض المزيد من الأدوات
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Guide -->
+    <section id="guide" class="guide-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap cyber-icon"></i>
+                    دليل التعلم الشامل
+                </h2>
+                <p class="section-subtitle">
+                    رحلتك من المبتدأ إلى الخبير في التحقيق الجنائي الرقمي
+                </p>
+            </div>
+            
+            <div class="learning-path">
+                <div class="path-level beginner active">
+                    <div class="level-header">
+                        <i class="fas fa-seedling"></i>
+                        <h3>المستوى المبتدئ</h3>
+                        <span class="level-badge">0-6 أشهر</span>
+                    </div>
+                    <div class="level-content">
+                        <ul class="skills-list">
+                            <li><i class="fas fa-check"></i> أساسيات التحقيق الجنائي الرقمي</li>
+                            <li><i class="fas fa-check"></i> استخدام SIFT Workstation</li>
+                            <li><i class="fas fa-check"></i> تعلم Autopsy و The Sleuth Kit</li>
+                            <li><i class="fas fa-check"></i> فهم أنظمة الملفات</li>
+                        </ul>
+                        <div class="recommended-tools">
+                            <h4>الأدوات المُوصى بها:</h4>
+                            <div class="tool-tags">
+                                <span class="tool-tag">Autopsy</span>
+                                <span class="tool-tag">FTK Imager</span>
+                                <span class="tool-tag">SIFT</span>
+                                <span class="tool-tag">Wireshark</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="path-level intermediate">
+                    <div class="level-header">
+                        <i class="fas fa-tree"></i>
+                        <h3>المستوى المتوسط</h3>
+                        <span class="level-badge">6-18 شهر</span>
+                    </div>
+                    <div class="level-content">
+                        <ul class="skills-list">
+                            <li><i class="fas fa-clock"></i> تحليل الذاكرة باستخدام Volatility</li>
+                            <li><i class="fas fa-clock"></i> تحليل الأجهزة المحمولة</li>
+                            <li><i class="fas fa-clock"></i> تحليل الشبكات والبروتوكولات</li>
+                            <li><i class="fas fa-clock"></i> التحقيق في الحوسبة السحابية</li>
+                        </ul>
+                        <div class="recommended-tools">
+                            <h4>الأدوات المُوصى بها:</h4>
+                            <div class="tool-tags">
+                                <span class="tool-tag">Volatility</span>
+                                <span class="tool-tag">Cellebrite UFED</span>
+                                <span class="tool-tag">X-Ways</span>
+                                <span class="tool-tag">NetworkMiner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="path-level advanced">
+                    <div class="level-header">
+                        <i class="fas fa-crown"></i>
+                        <h3>المستوى المتقدم</h3>
+                        <span class="level-badge">18+ شهر</span>
+                    </div>
+                    <div class="level-content">
+                        <ul class="skills-list">
+                            <li><i class="fas fa-lock"></i> تحليل العملات المشفرة والبلوك تشين</li>
+                            <li><i class="fas fa-lock"></i> التحقيق في الذكاء الاصطناعي</li>
+                            <li><i class="fas fa-lock"></i> تطوير أدوات مخصصة</li>
+                            <li><i class="fas fa-lock"></i> إدارة التحقيقات المعقدة</li>
+                        </ul>
+                        <div class="recommended-tools">
+                            <h4>الأدوات المُوصى بها:</h4>
+                            <div class="tool-tags">
+                                <span class="tool-tag">Chainalysis</span>
+                                <span class="tool-tag">EnCase</span>
+                                <span class="tool-tag">Magnet AXIOM</span>
+                                <span class="tool-tag">Custom Scripts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-download cyber-icon"></i>
+                    الموارد والتحميلات
+                </h2>
+                <p class="section-subtitle">
+                    مجموعة شاملة من الموارد التعليمية والأدوات
+                </p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-category">
+                    <h3><i class="fas fa-book"></i> كتب ومراجع</h3>
+                    <ul class="resource-list">
+                        <li><a href="#" target="_blank">دليل التحقيق الجنائي الرقمي</a></li>
+                        <li><a href="#" target="_blank">أساسيات أمن المعلومات</a></li>
+                        <li><a href="#" target="_blank">تحليل البرمجيات الخبيثة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3><i class="fas fa-video"></i> دورات تدريبية</h3>
+                    <ul class="resource-list">
+                        <li><a href="#" target="_blank">دورة Autopsy الشاملة</a></li>
+                        <li><a href="#" target="_blank">تعلم Volatility Framework</a></li>
+                        <li><a href="#" target="_blank">تحليل الأجهزة المحمولة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3><i class="fas fa-certificate"></i> شهادات احترافية</h3>
+                    <ul class="resource-list">
+                        <li><a href="#" target="_blank">CHFI - Computer Hacking Forensic Investigator</a></li>
+                        <li><a href="#" target="_blank">GCFA - GIAC Certified Forensic Analyst</a></li>
+                        <li><a href="#" target="_blank">EnCE - EnCase Certified Examiner</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3><i class="fas fa-users"></i> مجتمعات</h3>
+                    <ul class="resource-list">
+                        <li><a href="#" target="_blank">مجتمع الأمن السيبراني العربي</a></li>
+                        <li><a href="#" target="_blank">منتدى التحقيق الجنائي الرقمي</a></li>
+                        <li><a href="#" target="_blank">قناة Telegram للمتخصصين</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-shield-alt cyber-icon"></i>
+                        <span>دليل التحقيق الجنائي الرقمي</span>
+                    </div>
+                    <p class="footer-description">
+                        دليلك الشامل لعالم التحقيق الجنائي الرقمي والأمن السيبراني
+                        <br>
+                        نهدف لتوفير أفضل الموارد والأدوات للمتخصصين والمهتمين
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#categories">التصنيفات</a></li>
+                        <li><a href="#tools">الأدوات</a></li>
+                        <li><a href="#guide">الدليل</a></li>
+                        <li><a href="#resources">الموارد</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 دليل التحقيق الجنائي الرقمي. جميع الحقوق محفوظة.</p>
+                </div>
+                <div class="footer-tech">
+                    <span>مدعوم بأحدث التقنيات</span>
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="js/data.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
