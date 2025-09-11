@@ -435,12 +435,21 @@ selectSuggestion(name, id, isCategory = false) {
 
     // Search alternative query
     searchAlternative(query) {
-        const searchInput = document.getElementById('global-search');
-        if (searchInput) {
-            searchInput.value = query;
-            this.performSearch(query);
+    const searchInput = document.getElementById('global-search');
+    if (!searchInput) return;
+
+    searchInput.value = query;
+
+    setTimeout(() => {
+        const results = this.performSearch(query);
+        if (results.length === 0) {
+            this.showNoResults(query);
         }
-    }
+    }, 50);
+
+    this.hideSearchSuggestions();
+}
+
 
     // Show all search results
     showAllResults() {
@@ -735,13 +744,25 @@ selectSuggestion(name, id, isCategory = false) {
     }
 
     // Select history item
-    selectHistoryItem(query) {
-        const searchInput = document.getElementById('global-search');
-        if (searchInput) {
-            searchInput.value = query;
-            this.performSearch(query);
+   selectHistoryItem(query) {
+    const searchInput = document.getElementById('global-search');
+    if (!searchInput) return;
+
+    // ضع النص مباشرة في شريط البحث
+    searchInput.value = query;
+
+    // نفّذ البحث فورًا
+    setTimeout(() => {
+        const results = this.performSearch(query);
+        if (results.length === 0) {
+            this.showNoResults(query);
         }
-    }
+    }, 50);
+
+    // اخفاء قائمة الاقتراحات
+    this.hideSearchSuggestions();
+}
+
 
     // Clear search history
     clearSearchHistory() {
@@ -847,6 +868,47 @@ selectSuggestion(name, id, isCategory = false) {
 document.addEventListener('DOMContentLoaded', () => {
     window.advancedSearch = new AdvancedSearch();
 });
+// موحد لكل نقرة على أي اقتراح أو تاريخ أو اقتراح بديل
+AdvancedSearch.prototype.applySearchClick = function(query, id = null, isCategory = false) {
+    const searchInput = document.getElementById('global-search');
+    if (!searchInput) return;
+
+    // ضع النص في شريط البحث
+    searchInput.value = query;
+
+    // نفّذ البحث بعد تحديث القيمة مباشرة
+    setTimeout(() => {
+        const results = this.performSearch(query);
+        if (results.length === 0) {
+            this.showNoResults(query);
+        }
+    }, 50);
+
+    // إذا كان اقتراح تصنيف، استعرضه
+    if (isCategory && id && typeof window.exploreCategory === 'function') {
+        window.exploreCategory(id);
+    }
+
+    // أخفِ الاقتراحات
+    this.hideSearchSuggestions();
+};
+
+// استبدل جميع الطرق القديمة بالمركزية الجديدة:
+
+// 1️⃣ اقتراح البحث
+AdvancedSearch.prototype.selectSuggestion = function(name, id, isCategory = false) {
+    this.applySearchClick(name, id, isCategory);
+};
+
+// 2️⃣ عنصر تاريخ البحث
+AdvancedSearch.prototype.selectHistoryItem = function(query) {
+    this.applySearchClick(query);
+};
+
+// 3️⃣ اقتراح بديل
+AdvancedSearch.prototype.searchAlternative = function(query) {
+    this.applySearchClick(query);
+};
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {

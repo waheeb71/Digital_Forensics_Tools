@@ -712,7 +712,7 @@ a:hover {
 .search-icon {
     position: absolute;
     right: var(--spacing-lg);
-    top: 30%;
+    top: 45%;
     transform: translateY(-50%);
     color: var(--cyber-green);
     font-size: 1.2rem;
