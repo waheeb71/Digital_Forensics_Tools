@@ -1,49 +1,69 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>دليل أدوات التحقيق الجنائي الرقمي | Digital Forensics Tools Guide</title>
-    <meta name="description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي الرقمي مع روابط التحميل والشروحات المفصلة.">
-    <meta name="keywords" content="أدوات التحقيق الجنائي الرقمي, Digital Forensics, تحليل البيانات الرقمية, أمن المعلومات, تحليل الجرائم الإلكترونية">
-    <meta name="author" content="Digital Forensics Guide">
+    <meta
+      name="description"
+      content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي الرقمي مع روابط التحميل والشروحات المفصلة."
+    />
+    <meta
+      name="keywords"
+      content="أدوات التحقيق الجنائي الرقمي, Digital Forensics, تحليل البيانات الرقمية, أمن المعلومات, تحليل الجرائم الإلكترونية"
+    />
+    <meta name="author" content="Digital Forensics Guide" />
+
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="دليل أدوات التحقيق الجنائي الرقمي">
-    <meta property="og:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools">
-    
+    <meta property="og:title" content="دليل أدوات التحقيق الجنائي الرقمي" />
+    <meta property="og:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://via.placeholder.com/1200x630/1a1a1a/00ff88?text=Digital+Forensics+Tools"
+    />
+
     <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="دليل أدوات التحقيق الجنائي الرقمي">
-    <meta name="twitter:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف">
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="دليل أدوات التحقيق الجنائي الرقمي" />
+    <meta name="twitter:description" content="دليل شامل لأدوات التحقيق الجنائي الرقمي - من المبتدأ للاحتراف" />
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
     <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUExQTFBIi8+CjxwYXRoIGQ9Ik0xNiA4TDIwIDEyTDE2IDE2TDEyIDEyTDE2IDhaIiBmaWxsPSIjMDBGRjg4Ii8+CjxwYXRoIGQ9Ik0xNiAxNkwyMCAyMEwxNiAyNEwxMiAyMEwxNiAxNloiIGZpbGw9IiMwMEZGODgiLz4KPC9zdmc+">
-    
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUExQTFBIi8+CjxwYXRoIGQ9Ik0xNiA4TDIwIDEyTDE2IDE2TDEyIDEyTDE2IDhaIiBmaWxsPSIjMDBGRjg4Ii8+CjxwYXRoIGQ9Ik0xNiAxNkwyMCAyMEwxNiAyNEwxMiAyMEwxNiAxNloiIGZpbGw9IiMwMEZGODgiLz4KPC9zdmc+"
+    />
+
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00ff88">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Digital Forensics Guide">
-    
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00ff88" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Digital Forensics Guide" />
+
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
+      {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "دليل أدوات التحقيق الجنائي الرقمي",
@@ -52,156 +72,120 @@
         "description": "دليل شامل لأدوات التحقيق الجنائي الرقمي من المبتدأ للاحتراف. اكتشف أفضل أدوات التحليل الجنائي مع روابط التحميل والشروحات المفصلة.",
         "inLanguage": ["ar", "en"],
         "audience": {
-            "@type": "Audience",
-            "audienceType": "cybersecurity professionals, digital forensics experts, students"
+          "@type": "Audience",
+          "audienceType": "cybersecurity professionals, digital forensics experts, students"
         },
         "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://digital-forensics-guide.com/?search={search_term_string}"
-            },
-            "query-input": "required name=search_term_string"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Digital Forensics Guide",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://digital-forensics-guide.com/assets/logo.png"
-            }
-        },
-        "mainEntity": {
-            "@type": "ItemList",
-            "name": "أدوات التحقيق الجنائي الرقمي",
-            "description": "قائمة شاملة بأهم أدوات التحقيق الجنائي الرقمي",
-            "numberOfItems": 20,
-            "itemListElement": [
-                {
-                    "@type": "SoftwareApplication",
-                    "name": "Autopsy",
-                    "applicationCategory": "SecurityApplication",
-                    "operatingSystem": ["Windows", "Linux", "macOS"],
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                    }
-                },
-                {
-                    "@type": "SoftwareApplication", 
-                    "name": "Wireshark",
-                    "applicationCategory": "NetworkApplication",
-                    "operatingSystem": ["Windows", "Linux", "macOS"],
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                    }
-                }
-            ]
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://digital-forensics-guide.com/?search={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         }
-    }
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <i class="fas fa-search cyber-icon"></i>
-                <div class="loading-text">جاري التحميل</div>
-            </div>
-            <div class="loading-progress">
-                <div class="progress-bar"></div>
-            </div>
+      <div class="loading-content">
+        <div class="loading-logo">
+          <i class="fas fa-search cyber-icon"></i>
+          <div class="loading-text">جاري التحميل</div>
         </div>
+        <div class="loading-progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-shield-alt cyber-icon" style="color: red;"></i>
-                <span>دليل التحقيق الجنائي الرقمي</span>
-            </div>
-            
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active" data-section="home">
-                    <i class="fas fa-home"></i>
-                    الرئيسية
-                </a>
-                <a href="#categories" class="nav-link" data-section="categories">
-                    <i class="fas fa-layer-group"></i>
-                    التصنيفات
-                </a>
-                <a href="#tools" class="nav-link" data-section="tools">
-                    <i class="fas fa-tools"></i>
-                    الأدوات
-                </a>
-                <a href="#guide" class="nav-link" data-section="guide">
-                    <i class="fas fa-book"></i>
-                    الدليل
-                </a>
-                <a href="#resources" class="nav-link" data-section="resources">
-                    <i class="fas fa-download"></i>
-                    الموارد
-                </a>
-            </div>
-            
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <i class="fas fa-shield-alt cyber-icon" style="color: red"></i>
+          <span>دليل التحقيق الجنائي الرقمي</span>
         </div>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" class="nav-link active" data-section="home">
+            <i class="fas fa-home"></i>
+            الرئيسية
+          </a>
+          <a href="#categories" class="nav-link" data-section="categories">
+            <i class="fas fa-layer-group"></i>
+            التصنيفات
+          </a>
+          <a href="#tools" class="nav-link" data-section="tools">
+            <i class="fas fa-tools"></i>
+            الأدوات
+          </a>
+          <a href="#guide" class="nav-link" data-section="guide">
+            <i class="fas fa-book"></i>
+            الدليل
+          </a>
+          <a href="#resources" class="nav-link" data-section="resources">
+            <i class="fas fa-download"></i>
+            الموارد
+          </a>
+        </div>
+
+        <div class="nav-toggle" id="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-bg">
-            <div class="matrix-rain"></div>
-            <div class="cyber-grid"></div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span  data-text="دليل أدوات التحقيق الجنائي الرقمي" style="color: red;">دليل أدوات التحقيق الجنائي الرقمي</span>
-                </h1>
-                <p class="hero-subtitle">
-                    دليلك الشامل للتحقيق الجنائي الرقمي من المبتدأ إلى الاحتراف
-                    <br>
-                    استكشف أقوى الأدوات والتقنيات المتقدمة في عالم الأمن السيبراني
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="150">0</div>
-                        <div class="stat-label">أداة متخصصة</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="12">0</div>
-                        <div class="stat-label">تصنيف رئيسي</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="50">0</div>
-                        <div class="stat-label">دليل شامل</div>
-                    </div>
-                </div>
-                
-                <div class="hero-buttons">
-                    <button class="cta-button primary" onclick="scrollToSection('tools')">
-                        <i class="fas fa-rocket"></i>
-                        استكشف الأدوات
-                    </button>
-                    <button class="cta-button secondary" onclick="scrollToSection('guide')">
-                        <i class="fas fa-book-open"></i>
-                        ابدأ التعلم
-                    </button>
-                </div>
+      <div class="hero-bg">
+        <div class="matrix-rain"></div>
+        <div class="cyber-grid"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span data-text="دليل أدوات التحقيق الجنائي الرقمي" style="color: red"
+              >دليل أدوات التحقيق الجنائي الرقمي</span
+            >
+          </h1>
+          <p class="hero-subtitle">
+            دليلك الشامل للتحقيق الجنائي الرقمي من المبتدأ إلى الاحتراف
+            <br />
+            استكشف أقوى الأدوات والتقنيات المتقدمة في عالم الأمن السيبراني
+          </p>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number" data-count="150">0</div>
+              <div class="stat-label">أداة متخصصة</div>
             </div>
-            
+            <div class="stat-item">
+              <div class="stat-number" data-count="12">0</div>
+              <div class="stat-label">تصنيف رئيسي</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="50">0</div>
+              <div class="stat-label">دليل شامل</div>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <button class="cta-button primary" onclick="scrollToSection('tools')">
+              <i class="fas fa-rocket"></i>
+              استكشف الأدوات
+            </button>
+            <button class="cta-button secondary" onclick="scrollToSection('guide')">
+              <i class="fas fa-book-open"></i>
+              ابدأ التعلم
+            </button>
+          </div>
+        </div>
+
             <div class="hero-visual">
                 <div class="cyber-terminal">
                     <div class="terminal-header">

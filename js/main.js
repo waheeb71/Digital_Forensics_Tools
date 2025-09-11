@@ -1,4 +1,5 @@
-// ===== MAIN APPLICATION LOGIC =====
+
+// ===== MAIN APPLICATION LOGIC - نسخة محدثة ومصححة =====
 
 // Global State
 let currentFilter = {
@@ -11,6 +12,7 @@ let currentFilter = {
 let currentPage = 1;
 let itemsPerPage = 6;
 let isLoading = false;
+let allFilteredTools = [];
 
 // DOM Elements
 let navbar, navToggle, navMenu, loadingScreen, scrollToTopBtn;
@@ -20,29 +22,48 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-// Initialize App Function
+// Initialize App Function - مُصحح
 function initializeApp() {
     console.log('🚀 Initializing Digital Forensics Tools Website...');
     
-    // Cache DOM elements
-    cacheDOMElements();
-    
-    // Initialize components
-    initializeNavigation();
-    initializeLoadingScreen();
-    initializeCounters();
-    initializeSearch();
-    initializeScrollEffects();
-    initializeAnimations();
-    
-    // Load content
-    loadCategories();
-    loadFeaturedTools();
-    
-    // Initialize intersection observer
-    initializeIntersectionObserver();
-    
-    console.log('✅ Application initialized successfully!');
+    try {
+        // التحقق من وجود البيانات
+        if (typeof forensicsTools === 'undefined' || !forensicsTools) {
+            console.error('❌ البيانات غير محملة بشكل صحيح');
+            setTimeout(() => {
+                if (typeof forensicsTools !== 'undefined') {
+                    initializeApp();
+                }
+            }, 1000);
+            return;
+        }
+        
+        // Cache DOM elements
+        cacheDOMElements();
+        
+        // Initialize components
+        initializeNavigation();
+        initializeLoadingScreen();
+        initializeCounters();
+        initializeSearch();
+        initializeScrollEffects();
+        initializeAnimations();
+        
+        // Load content
+        loadCategories();
+        loadFeaturedTools();
+        
+        // Initialize intersection observer
+        initializeIntersectionObserver();
+        
+        // إضافة عداد النتائج
+        addResultsCounter();
+        
+        console.log('✅ Application initialized successfully!');
+        
+    } catch (error) {
+        console.error('❌ خطأ في تهيئة التطبيق:', error);
+    }
 }
 
 // Cache DOM Elements
@@ -54,9 +75,31 @@ function cacheDOMElements() {
     scrollToTopBtn = document.getElementById('scroll-to-top');
 }
 
+// إضافة عداد النتائج المفقود
+function addResultsCounter() {
+    const toolsSection = document.getElementById('tools');
+    if (toolsSection && !document.querySelector('.results-counter')) {
+        const sectionHeader = toolsSection.querySelector('.section-header');
+        if (sectionHeader) {
+            const resultsCounter = document.createElement('div');
+            resultsCounter.className = 'results-counter';
+            resultsCounter.id = 'results-counter';
+            resultsCounter.style.cssText = `
+                text-align: center;
+                margin: 16px 0;
+                padding: 8px 16px;
+                background: rgba(0, 255, 136, 0.1);
+                border-radius: 4px;
+                color: #333;
+                font-weight: 600;
+            `;
+            sectionHeader.appendChild(resultsCounter);
+        }
+    }
+}
+
 // Initialize Loading Screen
 function initializeLoadingScreen() {
-    // Simulate loading time
     setTimeout(() => {
         if (loadingScreen) {
             loadingScreen.classList.add('hidden');
@@ -64,32 +107,30 @@ function initializeLoadingScreen() {
                 loadingScreen.style.display = 'none';
             }, 500);
         }
-    }, 2000);
+    }, 1500);
 }
 
 // Initialize Navigation
 function initializeNavigation() {
-    // Mobile menu toggle
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', toggleMobileMenu);
     }
     
-    // Navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', handleNavClick);
     });
     
-    // Scroll effect for navbar
     window.addEventListener('scroll', handleNavbarScroll);
 }
 
 // Toggle Mobile Menu
 function toggleMobileMenu() {
+    if (!navMenu || !navToggle) return;
+    
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
     
-    // Animate hamburger
     const spans = navToggle.querySelectorAll('span');
     spans.forEach((span, index) => {
         span.style.transform = navMenu.classList.contains('active') 
@@ -98,7 +139,6 @@ function toggleMobileMenu() {
     });
 }
 
-// Get hamburger animation transform
 function getHamburgerTransform(index) {
     const transforms = [
         'rotate(45deg) translate(5px, 5px)',
@@ -116,14 +156,12 @@ function handleNavClick(e) {
     if (targetSection) {
         scrollToSection(targetSection);
         
-        // Update active nav link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active');
         });
         e.target.classList.add('active');
         
-        // Close mobile menu if open
-        if (navMenu.classList.contains('active')) {
+        if (navMenu && navMenu.classList.contains('active')) {
             toggleMobileMenu();
         }
     }
@@ -131,13 +169,14 @@ function handleNavClick(e) {
 
 // Handle Navbar Scroll
 function handleNavbarScroll() {
+    if (!navbar) return;
+    
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
     
-    // Show/hide scroll to top button
     if (scrollToTopBtn) {
         if (window.scrollY > 300) {
             scrollToTopBtn.style.display = 'flex';
@@ -159,7 +198,9 @@ function initializeCounters() {
     
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-count'));
-        const increment = target / 100;
+        if (isNaN(target)) return;
+        
+        const increment = target / 50;
         let current = 0;
         
         const updateCounter = () => {
@@ -172,7 +213,6 @@ function initializeCounters() {
             }
         };
         
-        // Start animation when element is visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -186,18 +226,19 @@ function initializeCounters() {
     });
 }
 
-// Initialize Search Functionality
+// Initialize Search Functionality - مُحدث ومُصحح
 function initializeSearch() {
     const searchInput = document.getElementById('global-search');
     const categoryFilter = document.getElementById('category-filter');
     const licenseFilter = document.getElementById('license-filter');
     const platformFilter = document.getElementById('platform-filter');
-    const searchSuggestions = document.getElementById('search-suggestions');
     
     if (searchInput) {
-        searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('input', debounce(handleSearch, 300));
         searchInput.addEventListener('focus', showSearchSuggestions);
-        searchInput.addEventListener('blur', hideSearchSuggestions);
+        searchInput.addEventListener('blur', () => {
+            setTimeout(hideSearchSuggestions, 200);
+        });
     }
     
     [categoryFilter, licenseFilter, platformFilter].forEach(filter => {
@@ -207,50 +248,65 @@ function initializeSearch() {
     });
 }
 
-// Handle Search Input
+// Handle Search Input - مُحدث
 function handleSearch(e) {
-    currentFilter.search = e.target.value.toLowerCase();
-    debounce(() => {
-        updateSearchSuggestions(e.target.value);
-        filterAndDisplayTools();
-    }, 300)();
+    currentFilter.search = e.target.value.toLowerCase().trim();
+    updateSearchSuggestions(e.target.value);
+    resetPaginationAndFilter();
 }
 
-// Handle Filter Change
+// Handle Filter Change - مُحدث
 function handleFilterChange(e) {
     const filterType = e.target.id.replace('-filter', '');
     currentFilter[filterType] = e.target.value;
+    resetPaginationAndFilter();
+}
+
+// إعادة تعيين الصفحات والفلترة
+function resetPaginationAndFilter() {
+    currentPage = 1;
     filterAndDisplayTools();
 }
 
-// Update Search Suggestions
+// Update Search Suggestions - مُحدث
 function updateSearchSuggestions(query) {
     const suggestions = document.getElementById('search-suggestions');
+    
     if (!suggestions || !query.trim()) {
-        suggestions.innerHTML = '';
-        suggestions.style.display = 'none';
+        if (suggestions) {
+            suggestions.innerHTML = '';
+            suggestions.style.display = 'none';
+        }
         return;
     }
     
-    const matches = forensicsTools
-        .filter(tool => 
-            tool.name.toLowerCase().includes(query.toLowerCase()) ||
-            tool.description.toLowerCase().includes(query.toLowerCase())
-        )
-        .slice(0, 5);
-    
-    if (matches.length > 0) {
-        suggestions.innerHTML = matches
-            .map(tool => `
-                <div class="suggestion-item" onclick="selectSuggestion('${tool.name}')">
-                    <i class="${getCategoryIcon(tool.category)}"></i>
-                    <span>${tool.name}</span>
-                    <small>${tool.description.substring(0, 50)}...</small>
-                </div>
-            `).join('');
-        suggestions.style.display = 'block';
-    } else {
-        suggestions.style.display = 'none';
+    try {
+        const matches = forensicsTools
+            .filter(tool => 
+                tool.name.toLowerCase().includes(query.toLowerCase()) ||
+                tool.description.toLowerCase().includes(query.toLowerCase()) ||
+                (tool.tags && tool.tags.some(tag => 
+                    tag.toLowerCase().includes(query.toLowerCase())
+                ))
+            )
+            .slice(0, 5);
+        
+        if (matches.length > 0) {
+            suggestions.innerHTML = matches
+                .map(tool => `
+                    <div class="suggestion-item" onclick="selectSuggestion('${tool.name}')">
+                        <i class="${getCategoryIcon(tool.category)}"></i>
+                        <span>${tool.name}</span>
+                        <small>${tool.description.substring(0, 50)}...</small>
+                    </div>
+                `).join('');
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.innerHTML = '<div class="suggestion-item">لم يتم العثور على نتائج</div>';
+            suggestions.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('خطأ في تحديث اقتراحات البحث:', error);
     }
 }
 
@@ -260,12 +316,11 @@ function selectSuggestion(toolName) {
     if (searchInput) {
         searchInput.value = toolName;
         currentFilter.search = toolName.toLowerCase();
-        filterAndDisplayTools();
+        resetPaginationAndFilter();
         hideSearchSuggestions();
     }
 }
 
-// Show/Hide Search Suggestions
 function showSearchSuggestions() {
     const suggestions = document.getElementById('search-suggestions');
     if (suggestions && suggestions.innerHTML.trim()) {
@@ -274,193 +329,87 @@ function showSearchSuggestions() {
 }
 
 function hideSearchSuggestions() {
-    setTimeout(() => {
-        const suggestions = document.getElementById('search-suggestions');
-        if (suggestions) {
-            suggestions.style.display = 'none';
-        }
-    }, 200);
+    const suggestions = document.getElementById('search-suggestions');
+    if (suggestions) {
+        suggestions.style.display = 'none';
+    }
 }
 
-// Load Categories
+// Load Categories - مُحدث
 function loadCategories() {
     const categoriesGrid = document.getElementById('categories-grid');
-    if (!categoriesGrid) return;
+    if (!categoriesGrid || !categories) return;
     
-    const categoryCards = categories.map(category => `
-        <div class="category-card fade-in" data-category="${category.id}">
-            <div class="category-header">
-                <div class="category-icon" style="color: ${category.color}">
-                    <i class="${category.icon}"></i>
+    try {
+        const categoryCards = categories.map(category => `
+            <div class="category-card fade-in" data-category="${category.id}">
+                <div class="category-header">
+                    <div class="category-icon" style="color: ${category.color}">
+                        <i class="${category.icon}"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">${category.name}</h3>
+                        <p class="category-name-en">${category.nameEn || ''}</p>
+                    </div>
+                    <div class="category-badge">
+                        <span class="tools-count">${getToolsCountByCategory(category.id)}</span>
+                        <small>أداة</small>
+                    </div>
                 </div>
-                <div class="category-info">
-                    <h3 class="category-name">${category.name}</h3>
-                    <p class="category-name-en">${category.nameEn}</p>
-                </div>
-                <div class="category-badge">
-                    <span class="tools-count">${category.toolsCount}</span>
-                    <small>أداة</small>
-                </div>
-            </div>
-            
-            <div class="category-body">
-                <p class="category-description">${category.description}</p>
                 
-                <div class="category-meta">
-                    <div class="difficulty-badge ${getDifficultyClass(category.difficulty)}">
-                        <i class="fas fa-signal"></i>
-                        ${category.difficulty}
-                    </div>
+                <div class="category-body">
+                    <p class="category-description">${category.description}</p>
                     
-                    <div class="category-image">
-                        <img src="${category.image}" alt="${category.name}" loading="lazy">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="category-footer">
-                <button class="explore-btn" onclick="exploreCategory('${category.id}')">
-                    <i class="fas fa-arrow-left"></i>
-                    استكشف الأدوات
-                </button>
-            </div>
-        </div>
-    `).join('');
-    
-    categoriesGrid.innerHTML = categoryCards;
-}
-
-// Load Featured Tools
-function loadFeaturedTools() {
-    const toolsGrid = document.getElementById('featured-tools');
-    if (!toolsGrid) return;
-    
-    // Get featured tools (first 6 tools)
-    const featuredTools = forensicsTools.slice(0, 6);
-    
-    const toolCards = featuredTools.map((tool, index) => `
-        <div class="tool-card fade-in stagger-${(index % 6) + 1}" data-tool="${tool.id}">
-            <div class="tool-header">
-                <div class="tool-image">
-                    <img src="${tool.image}" alt="${tool.name}" loading="lazy">
-                    <div class="tool-overlay">
-                        <div class="tool-type ${getTypeClass(tool.type)}">
-                            ${tool.type}
+                    <div class="category-meta">
+                        <div class="difficulty-badge ${getDifficultyClass(category.difficulty)}">
+                            <i class="fas fa-signal"></i>
+                            ${category.difficulty}
+                        </div>
+                        
+                        <div class="category-image">
+                            <img src="${category.image}" alt="${category.name}" loading="lazy">
                         </div>
                     </div>
                 </div>
                 
-                <div class="tool-rating">
-                    <div class="stars">
-                        ${generateStars(tool.rating)}
-                    </div>
-                    <span class="rating-number">${tool.rating}</span>
-                </div>
-            </div>
-            
-            <div class="tool-body">
-                <h3 class="tool-name">${tool.name}</h3>
-                <p class="tool-description">${tool.description}</p>
-                
-                <div class="tool-platforms">
-                    ${tool.platforms.map(platform => `
-                        <span class="platform-badge">
-                            <i class="${getPlatformIcon(platform)}"></i>
-                            ${platform}
-                        </span>
-                    `).join('')}
-                </div>
-                
-                <div class="tool-tags">
-                    ${tool.tags.slice(0, 3).map(tag => `
-                        <span class="tool-tag">${tag}</span>
-                    `).join('')}
-                </div>
-            </div>
-            
-            <div class="tool-footer">
-                <div class="tool-meta">
-                    <span class="tool-price">${tool.price}</span>
-                    <span class="tool-downloads">${tool.downloads}</span>
-                </div>
-                
-                <div class="tool-actions">
-                    <a href="${tool.downloadUrl}" target="_blank" class="download-btn primary">
-                        <i class="fas fa-download"></i>
-                        تحميل
-                    </a>
-                    <button class="info-btn" onclick="showToolDetails('${tool.id}')">
-                        <i class="fas fa-info-circle"></i>
-                        التفاصيل
+                <div class="category-footer">
+                    <button class="explore-btn" onclick="exploreCategory('${category.id}')">
+                        <i class="fas fa-arrow-left"></i>
+                        استكشف الأدوات
                     </button>
                 </div>
             </div>
-        </div>
-    `).join('');
-    
-    toolsGrid.innerHTML = toolCards;
+        `).join('');
+        
+        categoriesGrid.innerHTML = categoryCards;
+    } catch (error) {
+        console.error('خطأ في تحميل التصنيفات:', error);
+    }
 }
 
-// Filter and Display Tools
-function filterAndDisplayTools() {
+// Load Featured Tools - مُحدث ومُصحح
+function loadFeaturedTools() {
     const toolsGrid = document.getElementById('featured-tools');
-    if (!toolsGrid) return;
+    if (!toolsGrid || !forensicsTools) return;
     
-    let filteredTools = forensicsTools;
-    
-    // Apply filters
-    if (currentFilter.category) {
-        filteredTools = filteredTools.filter(tool => 
-            tool.category === currentFilter.category
-        );
+    try {
+        // عرض أول 6 أدوات كأدوات مميزة
+        const featuredTools = forensicsTools.slice(0, 6);
+        displayToolsInGrid(featuredTools, toolsGrid);
+        
+        // تحديث عدد النتائج
+        updateResultsCounter(featuredTools.length);
+        
+    } catch (error) {
+        console.error('خطأ في تحميل الأدوات المميزة:', error);
     }
-    
-    if (currentFilter.license) {
-        filteredTools = filteredTools.filter(tool => 
-            getToolLicenseType(tool.type) === currentFilter.license
-        );
-    }
-    
-    if (currentFilter.platform) {
-        filteredTools = filteredTools.filter(tool => 
-            tool.platforms.some(platform => 
-                platform.toLowerCase().includes(currentFilter.platform.toLowerCase())
-            )
-        );
-    }
-    
-    if (currentFilter.search) {
-        filteredTools = filteredTools.filter(tool => 
-            tool.name.toLowerCase().includes(currentFilter.search) ||
-            tool.description.toLowerCase().includes(currentFilter.search) ||
-            tool.tags.some(tag => tag.toLowerCase().includes(currentFilter.search))
-        );
-    }
-    
-    // Display filtered tools
-    displayTools(filteredTools);
-    
-    // Update results counter
-    updateResultsCounter(filteredTools.length);
 }
 
-// Display Tools
-function displayTools(tools) {
-    const toolsGrid = document.getElementById('featured-tools');
-    if (!toolsGrid) return;
+// عرض الأدوات في الشبكة - دالة مُحدثة
+function displayToolsInGrid(tools, container) {
+    if (!tools || !container) return;
     
-    if (tools.length === 0) {
-        toolsGrid.innerHTML = `
-            <div class="no-results">
-                <i class="fas fa-search"></i>
-                <h3>لم يتم العثور على نتائج</h3>
-                <p>جرب البحث بكلمات مفتاحية مختلفة أو قم بتغيير المرشحات</p>
-            </div>
-        `;
-        return;
-    }
-    
-    const toolCards = tools.slice(0, currentPage * itemsPerPage).map((tool, index) => `
+    const toolCards = tools.map((tool, index) => `
         <div class="tool-card fade-in" data-tool="${tool.id}" style="animation-delay: ${index * 0.1}s">
             <div class="tool-header">
                 <div class="tool-image">
@@ -494,7 +443,7 @@ function displayTools(tools) {
                 </div>
                 
                 <div class="tool-tags">
-                    ${tool.tags.slice(0, 3).map(tag => `
+                    ${(tool.tags || []).slice(0, 3).map(tag => `
                         <span class="tool-tag">${tag}</span>
                     `).join('')}
                 </div>
@@ -520,11 +469,245 @@ function displayTools(tools) {
         </div>
     `).join('');
     
-    toolsGrid.innerHTML = toolCards;
+    container.innerHTML = toolCards;
 }
 
-// Utility Functions
+// Filter and Display Tools - مُحدث ومُصحح
+function filterAndDisplayTools() {
+    const toolsGrid = document.getElementById('featured-tools');
+    if (!toolsGrid || !forensicsTools) return;
+    
+    try {
+        // تطبيق الفلاتر
+        let filteredTools = [...forensicsTools];
+        
+        // فلتر التصنيف
+        if (currentFilter.category) {
+            filteredTools = filteredTools.filter(tool => 
+                tool.category === currentFilter.category
+            );
+        }
+        
+        // فلتر الترخيص
+        if (currentFilter.license) {
+            filteredTools = filteredTools.filter(tool => {
+                const licenseType = getToolLicenseType(tool.type);
+                return licenseType === currentFilter.license;
+            });
+        }
+        
+        // فلتر المنصة
+        if (currentFilter.platform) {
+            filteredTools = filteredTools.filter(tool => 
+                tool.platforms && tool.platforms.some(platform => 
+                    platform.toLowerCase().includes(currentFilter.platform.toLowerCase())
+                )
+            );
+        }
+        
+        // فلتر البحث
+        if (currentFilter.search) {
+            filteredTools = filteredTools.filter(tool => 
+                tool.name.toLowerCase().includes(currentFilter.search) ||
+                tool.description.toLowerCase().includes(currentFilter.search) ||
+                (tool.tags && tool.tags.some(tag => 
+                    tag.toLowerCase().includes(currentFilter.search)
+                ))
+            );
+        }
+        
+        // حفظ النتائج المفلترة
+        allFilteredTools = filteredTools;
+        
+        // عرض النتائج مع التصفح
+        displayFilteredTools();
+        
+    } catch (error) {
+        console.error('خطأ في فلترة الأدوات:', error);
+    }
+}
+
+// عرض النتائج المفلترة - دالة جديدة
+function displayFilteredTools() {
+    const toolsGrid = document.getElementById('featured-tools');
+    if (!toolsGrid) return;
+    
+    // حساب النتائج للصفحة الحالية
+    const startIndex = 0;
+    const endIndex = currentPage * itemsPerPage;
+    const toolsToDisplay = allFilteredTools.slice(startIndex, endIndex);
+    
+    if (toolsToDisplay.length === 0) {
+        showNoResultsMessage(toolsGrid);
+        updateResultsCounter(0);
+        hideLoadMoreButton();
+        return;
+    }
+    
+    // عرض الأدوات
+    displayToolsInGrid(toolsToDisplay, toolsGrid);
+    
+    // تحديث عداد النتائج
+    updateResultsCounter(allFilteredTools.length);
+    
+    // إظهار/إخفاء زر "عرض المزيد"
+    toggleLoadMoreButton();
+}
+
+// عرض رسالة عدم وجود نتائج
+function showNoResultsMessage(container) {
+    container.innerHTML = `
+        <div class="no-results" style="
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 2px dashed #ccc;
+        ">
+            <i class="fas fa-search" style="font-size: 48px; color: #ccc; margin-bottom: 16px;"></i>
+            <h3 style="color: #666; margin-bottom: 8px;">لم يتم العثور على نتائج</h3>
+            <p style="color: #888;">جرب البحث بكلمات مفتاحية مختلفة أو قم بتغيير المرشحات</p>
+            <button onclick="clearAllFilters()" style="
+                margin-top: 16px;
+                padding: 8px 16px;
+                background: #00ff88;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            ">
+                مسح جميع المرشحات
+            </button>
+        </div>
+    `;
+}
+
+// مسح جميع المرشحات
+function clearAllFilters() {
+    // إعادة تعيين المرشحات
+    currentFilter = {
+        category: '',
+        license: '',
+        platform: '',
+        search: ''
+    };
+    
+    // مسح قيم الإدخال
+    const searchInput = document.getElementById('global-search');
+    if (searchInput) searchInput.value = '';
+    
+    const filters = ['category-filter', 'license-filter', 'platform-filter'];
+    filters.forEach(filterId => {
+        const filter = document.getElementById(filterId);
+        if (filter) filter.value = '';
+    });
+    
+    // إعادة تحميل الأدوات
+    currentPage = 1;
+    loadFeaturedTools();
+}
+
+// تحديث عداد النتائج
+function updateResultsCounter(count) {
+    const counter = document.getElementById('results-counter');
+    if (counter) {
+        if (count === 0) {
+            counter.textContent = 'لا توجد نتائج';
+            counter.style.background = 'rgba(255, 71, 87, 0.1)';
+            counter.style.color = '#ff4757';
+        } else {
+            counter.textContent = `تم العثور على ${count} أداة`;
+            counter.style.background = 'rgba(0, 255, 136, 0.1)';
+            counter.style.color = '#333';
+        }
+    }
+}
+
+// إظهار/إخفاء زر عرض المزيد
+function toggleLoadMoreButton() {
+    const loadBtn = document.querySelector('.load-more-btn');
+    if (!loadBtn) return;
+    
+    const hasMoreTools = (currentPage * itemsPerPage) < allFilteredTools.length;
+    
+    if (hasMoreTools) {
+        loadBtn.style.display = 'block';
+        loadBtn.disabled = false;
+    } else {
+        loadBtn.style.display = 'none';
+    }
+}
+
+// إخفاء زر عرض المزيد
+function hideLoadMoreButton() {
+    const loadBtn = document.querySelector('.load-more-btn');
+    if (loadBtn) {
+        loadBtn.style.display = 'none';
+    }
+}
+
+// دالة عرض المزيد - مُصححة
+function loadMoreTools() {
+    if (isLoading || !allFilteredTools || allFilteredTools.length === 0) return;
+    
+    isLoading = true;
+    const loadBtn = document.querySelector('.load-more-btn');
+    
+    if (loadBtn) {
+        loadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+        loadBtn.disabled = true;
+    }
+    
+    setTimeout(() => {
+        currentPage++;
+        displayFilteredTools();
+        
+        isLoading = false;
+        if (loadBtn) {
+            loadBtn.innerHTML = '<i class="fas fa-plus"></i> عرض المزيد من الأدوات';
+            loadBtn.disabled = false;
+        }
+    }, 800);
+}
+
+// دالة استكشاف التصنيف - مُصححة
+function exploreCategory(categoryId) {
+    // تحديث المرشح
+    currentFilter.category = categoryId;
+    currentPage = 1;
+    
+    // تحديث قائمة التصنيفات
+    const categorySelect = document.getElementById('category-filter');
+    if (categorySelect) {
+        categorySelect.value = categoryId;
+    }
+    
+    // فلترة وعرض الأدوات
+    filterAndDisplayTools();
+    
+    // التمرير إلى قسم الأدوات
+    scrollToSection('tools');
+}
+
+// عرض تفاصيل الأداة
+function showToolDetails(toolId) {
+    const tool = forensicsTools.find(t => t.id === toolId);
+    if (!tool) return;
+    
+    // يمكن تطوير نافذة منبثقة أو صفحة منفصلة
+    alert(`تفاصيل ${tool.name}:\n\n${tool.description}\n\nالميزات:\n• ${(tool.features || []).join('\n• ')}`);
+}
+
+// حساب عدد الأدوات لكل تصنيف
+function getToolsCountByCategory(categoryId) {
+    if (!forensicsTools) return 0;
+    return forensicsTools.filter(tool => tool.category === categoryId).length;
+}
+
+// Utility Functions - مُحدثة
 function getCategoryIcon(categoryId) {
+    if (!categories) return 'fas fa-tools';
     const category = categories.find(cat => cat.id === categoryId);
     return category ? category.icon : 'fas fa-tools';
 }
@@ -570,6 +753,8 @@ function getPlatformIcon(platform) {
 }
 
 function generateStars(rating) {
+    if (!rating || isNaN(rating)) return '';
+    
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
@@ -609,51 +794,15 @@ window.scrollToSection = function(sectionId) {
     }
 };
 
-window.exploreCategory = function(categoryId) {
-    currentFilter.category = categoryId;
-    filterAndDisplayTools();
-    scrollToSection('tools');
-    
-    // Update category filter select
-    const categorySelect = document.getElementById('category-filter');
-    if (categorySelect) {
-        categorySelect.value = categoryId;
-    }
-};
-
-window.showToolDetails = function(toolId) {
-    const tool = forensicsTools.find(t => t.id === toolId);
-    if (tool) {
-        // Create modal or redirect to detail page
-        alert(`تفاصيل ${tool.name}:\n\n${tool.description}\n\nالميزات:\n${tool.features.join('\n• ')}`);
-    }
-};
-
-window.loadMoreTools = function() {
-    if (isLoading) return;
-    
-    isLoading = true;
-    currentPage++;
-    
-    // Show loading state
-    const loadBtn = document.querySelector('.load-more-btn');
-    if (loadBtn) {
-        loadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
-    }
-    
-    setTimeout(() => {
-        filterAndDisplayTools();
-        isLoading = false;
-        
-        if (loadBtn) {
-            loadBtn.innerHTML = '<i class="fas fa-plus"></i> عرض المزيد من الأدوات';
-        }
-    }, 1000);
-};
+// تصدير الدوال للاستخدام العام
+window.exploreCategory = exploreCategory;
+window.showToolDetails = showToolDetails;
+window.loadMoreTools = loadMoreTools;
+window.selectSuggestion = selectSuggestion;
+window.clearAllFilters = clearAllFilters;
 
 // Initialize Scroll Effects
 function initializeScrollEffects() {
-    // Scroll to top button
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -677,7 +826,6 @@ function initializeScrollEffects() {
 
 // Initialize Animations
 function initializeAnimations() {
-    // Add animation classes to elements
     const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
     
     animatedElements.forEach(el => {
@@ -732,12 +880,4 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
-}
-
-// Update Results Counter
-function updateResultsCounter(count) {
-    const counter = document.querySelector('.results-counter');
-    if (counter) {
-        counter.textContent = `تم العثور على ${count} أداة`;
-    }
 }
