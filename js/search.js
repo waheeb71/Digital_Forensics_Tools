@@ -547,6 +547,21 @@ class AdvancedSearch {
 
         toolsGrid.innerHTML = toolCards;
 
+        // Manually trigger the animation for the new cards since they are dynamically added
+        const newToolCards = toolsGrid.querySelectorAll('.tool-card');
+        newToolCards.forEach(card => {
+            // A small delay to ensure the browser registers the elements before adding the class
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, 10);
+        });
+
+        // Remove existing search header to prevent duplicates
+        const existingHeader = document.querySelector('.search-results-header');
+        if (existingHeader) {
+            existingHeader.remove();
+        }
+
         // Add search results header
         const searchHeader = `
             <div class="search-results-header">

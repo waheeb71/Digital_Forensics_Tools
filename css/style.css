@@ -514,7 +514,7 @@ a:hover {
     box-shadow: var(--shadow-cyber);
     overflow: hidden;
 }
-#toolsGrid p {
+.tools-grid p {
     color: var(--primary-text);
 }
 
