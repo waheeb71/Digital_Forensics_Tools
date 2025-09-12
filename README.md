@@ -1,13 +1,15 @@
 # 🔍 دليل شامل لأدوات التحقيق الجنائي الرقمي (Digital Forensics Toolkit)
 # الموقع :
->  https://digitalforensicstools711.netlify.app/
+
+>  **https://digitalforensicstools711.netlify.app**
+
 > 🌐 **مصدر مرجعي متكامل - محدث حتى 2025**  
 > ✅ يشمل: أدوات مجانية/تجارية، توزيعات، أجهزة، تقنيات مستقبلية، ومعايير دولية  
 > 💡 مصمم للمبتدئين، المحترفين، المؤسسات، والباحثين
 
 ---
 
-## 📚 التصنيف الرئيسي للأدوات
+##  التصنيف الرئيسي للأدوات
 
 ### 1️⃣ حسب الترخيص
 
@@ -126,7 +128,7 @@
 - Parrot Security OS  
 - BlackArch  
 
-#### 💾 تحليل الذاكرة (Memory Forensics)
+####  تحليل الذاكرة (Memory Forensics)
 - Volatility Framework  
 - Rekall  
 - Magnet DumpIt  
@@ -142,8 +144,8 @@
 - Nmap  
 - Netstat  
 - Arkime (Moloch)  
-- Zeek (Bro) *(مضاف)*  
-- Suricata *(مضاف)*  
+- Zeek (Bro) 
+- Suricata 
 
 #### 📱 تحليل الأجهزة المحمولة (Mobile Forensics)
 - Cellebrite UFED  
@@ -153,8 +155,8 @@
 - Hancom MD-NEXT  
 - MOBILedit Forensic  
 - Andriller  
-- iPhone Backup Extractor *(مضاف)*  
-- iMazing Forensic *(مضاف)*  
+- iPhone Backup Extractor 
+- iMazing Forensic   
 
 #### 📧 تحليل البريد الإلكتروني (Email Forensics)
 - MailXaminer  
@@ -168,18 +170,18 @@
 - Browser History Viewer  
 - Web Historian  
 - ChromeAnalysis Plus  
-- Firefox Forensics Toolkit *(مضاف)*  
+- Firefox Forensics Toolkit 
 
 #### 💾 تحليل قواعد البيانات (Database Forensics)
 - DB Browser for SQLite  
 - SQL Server Forensic Toolkit  
 - Oracle Database Forensics  
-- MongoDB Forensics *(مضاف)*  
-- Redis Forensics *(مضاف)*  
+- MongoDB Forensics 
+- Redis Forensics 
 
 #### 🗃️ تحليل البيانات الوصفية (Metadata)
 - ExifTool  
-- Metadata Anonymisation Toolkit (MAT) *(مضاف)*  
+- Metadata Anonymisation Toolkit (MAT) 
 
 #### 🔓 تحليل كلمات المرور (Password Analysis)
 - Hashcat  
@@ -187,8 +189,8 @@
 - Ophcrack  
 - L0phtCrack  
 - Cain & Abel  
-- KeyFinder *(مضاف)*  
-- DecryptTools *(مضاف)*  
+- KeyFinder  
+- DecryptTools 
 
 #### 📂 استعادة البيانات (Data Recovery)
 - PhotoRec  
@@ -196,38 +198,38 @@
 - Recuva  
 - R-Studio  
 - Disk Drill  
-- foremost *(مضاف)*  
-- scalpel *(مضاف)*  
+- foremost  
+- scalpel 
 
 #### 🕵️‍♂️ تحليل الصور والفيديو (Image/Video Forensics)
 - Amped FIVE  
 - VLC  
 - FFmpeg  
-- StegSolve *(مضاف)*  
-- StegDetect *(مضاف)*  
-- ImageJ *(مضاف)*  
+- StegSolve  
+- StegDetect   
+- ImageJ  
 
 #### ☁️ التحقيق السحابي (Cloud Forensics)
 - Magnet Axiom Cloud  
 - Oxygen Forensic Cloud Extractor  
 - Cellebrite Cloud Analyzer  
 - MSAB Cloud Analytics  
-- AWS Forensics Toolkit *(مضاف)*  
-- Azure Forensics Toolkit *(مضاف)*  
-- Google Cloud Forensics *(مضاف)*  
+- AWS Forensics Toolkit  
+- Azure Forensics Toolkit 
+- Google Cloud Forensics  
 
 #### 🤖 تحليل إنترنت الأشياء (IoT Forensics)
 - IoT Detective  
 - UFED Physical Analyzer  
 - Autopsy IoT Modules  
-- Raspberry Pi Forensics Toolkit *(مضاف)*  
-- Smart Home Device Analyzer *(مضاف)*  
+- Raspberry Pi Forensics Toolkit  
+- Smart Home Device Analyzer  
 
 #### ⚙️ تحليل السيارات والأنظمة الذكية (Vehicle Forensics)
 - Vehicle System Forensic Toolkit  
 - Berla iVe  
 - Oxygen Forensic Vehicle  
-- OBD-II Forensics *(مضاف)*  
+- OBD-II Forensics
 
 #### 🧩 تحليل البلوك تشين والعملات المشفرة (Blockchain Forensics)
 - Chainalysis  
@@ -236,23 +238,23 @@
 - Crystal Blockchain  
 - TRM Labs  
 - Bitquery Coinpath API  
-- MyCrypto / Etherscan *(مضاف - للتحليل البشري)*  
+- MyCrypto / Etherscan 
 
 #### 🎮 تحليل الألعاب والعوالم الافتراضية (Game & Metaverse Forensics)
 - Game Forensics Toolkit  
 - Steam Analysis Tools  
 - Discord Investigation  
 - VR Forensics Tools  
-- NFT Investigation Toolkit *(مضاف)*  
+- NFT Investigation Toolkit  
 
 #### 📊 تحليل وسائل التواصل الاجتماعي (Social Media Forensics)
 - X1 Social Discovery  
 - Pagefreezer  
 - ArchiveSocial  
 - Skopenow  
-- Facebook/Meta Inspector *(مضاف)*  
-- Instagram Data Grabber *(مضاف)*  
-- TikTok Forensics Tool *(مضاف)*  
+- Facebook/Meta Inspector  
+- Instagram Data Grabber 
+- TikTok Forensics Tool 
 
 #### 🛡️ مكافحة تقنيات مضادة للتحقيق (Anti-Forensics Countermeasures)
 - StegDetect  
@@ -263,8 +265,8 @@
 - KeyFinder  
 - DBAN  
 - Eraser  
-- Tor / I2P / VPN Detection Tools *(مضاف)*  
-- Monero / Zcash Tracing Tools *(مضاف)*  
+- Tor / I2P / VPN Detection Tools 
+- Monero / Zcash Tracing Tools  
 
 #### 🧠 تحليل الذكاء الاصطناعي والتعلم الآلي (AI/ML in DFIR)
 - Magnet AI  
@@ -285,7 +287,7 @@
 - NetworkX (Python)  
 - Cytoscape  
 
-#### 🧪 أدوات التخصص المتقدمة
+####  أدوات التخصص المتقدمة
 - **MITRE ATT&CK Framework** – تحليل تكتيكات المهاجمين  
 - **YARA Rules** – كشف البرمجيات الخبيثة  
 - **Sigma Rules** – كشف التهديدات في السجلات  
@@ -351,7 +353,7 @@
 
 ---
 
-## 🏛️ معايير الاختيار والاعتماد
+##  معايير الاختيار والاعتماد
 
 ### ✅ عند اختيار الأدوات، اسأل:
 | السؤال | التوجيه |
@@ -391,7 +393,7 @@
 - تدرّب على **ExifTool** و **dd/dcfldd**
 - احصل على شهادة **CHFI** أو **GCFA**
 
-### 🧑‍💻 للمتخصصين
+### 🧑 للمتخصصين
 - استثمر في **EnCase**, **FTK**, أو **X-Ways Forensics**
 - احصل على **Cellebrite UFED** للأجهزة المحمولة
 - استخدم **Magnet Axiom** للحلول المتكاملة
@@ -407,7 +409,7 @@
 
 ---
 
-## 🔮 اتجاهات المستقبل (2025–2030)
+##  اتجاهات المستقبل (2025–2030)
 
 | الاتجاه | التوقعات |
 |--------|-----------|
@@ -444,5 +446,5 @@
 ---
 
 > 💡 **ملاحظة أخيرة**: هذا الدليل مُحدث حتى **أبريل 2025**.  
-> 🔄 يُرجى تحديثه دورياً عبر Pull Requests على GitHub.  
-> 📎 **جميع الأدوات مصنفة حسب النوع، الترخيص، والوظيفة، مع إضافة 30+ أداة لم تُذكر في النص الأصلي**.
+ 
+
