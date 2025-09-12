@@ -1,4 +1,4 @@
-// ===== DIGITAL FORENSICS TOOLS DATABASE =====
+
 
 // Categories Data
 const categories = [
@@ -9,7 +9,7 @@ const categories = [
         description: 'أدوات تحليل أنظمة الحاسوب والأقراص الصلبة واستعادة البيانات',
         icon: 'fas fa-desktop',
         color: '#00ff88',
-        toolsCount: 25, // مُحدّث من 15 إلى 25
+        toolsCount: 25, 
         difficulty: 'متوسط',
         image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop'
     },
@@ -20,7 +20,7 @@ const categories = [
         description: 'أدوات استخراج وتحليل بيانات الهواتف الذكية والأجهزة اللوحية',
         icon: 'fas fa-mobile-alt',
         color: '#00d4ff',
-        toolsCount: 15, // مُحدّث من 12 إلى 15
+        toolsCount: 15,
         difficulty: 'متقدم',
         image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=250&fit=crop'
     },
@@ -31,7 +31,7 @@ const categories = [
         description: 'أدوات مراقبة وتحليل حركة البيانات الشبكية وكشف التهديدات',
         icon: 'fas fa-network-wired',
         color: '#8b5cf6',
-        toolsCount: 20, // مُحدّث من 18 إلى 20
+        toolsCount: 20, 
         difficulty: 'متقدم',
         image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop'
     },
@@ -42,7 +42,7 @@ const categories = [
         description: 'أدوات تحليل الذاكرة العشوائية واستخراج البيانات المؤقتة',
         icon: 'fas fa-memory',
         color: '#ff4757',
-        toolsCount: 9, // مُحدّث من 8 إلى 9
+        toolsCount: 9, 
         difficulty: 'متقدم',
         image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=250&fit=crop'
     },
@@ -53,7 +53,7 @@ const categories = [
         description: 'أدوات تحليل البيانات والخدمات السحابية المختلفة',
         icon: 'fas fa-cloud',
         color: '#ffa502',
-        toolsCount: 12, // مُحدّث من 10 إلى 12
+        toolsCount: 12, 
         difficulty: 'متقدم',
         image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop'
     },
@@ -64,7 +64,7 @@ const categories = [
         description: 'أدوات تتبع وتحليل معاملات العملات المشفرة والبلوك تشين',
         icon: 'fas fa-link',
         color: '#2ed573',
-        toolsCount: 9, // مُحدّث من 7 إلى 9
+        toolsCount: 9,
         difficulty: 'متخصص',
         image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=250&fit=crop'
     },
@@ -75,7 +75,7 @@ const categories = [
         description: 'أدوات فحص وتحليل الفيروسات والبرمجيات الضارة',
         icon: 'fas fa-virus',
         color: '#ff3742',
-        toolsCount: 16, // مُحدّث من 14 إلى 16
+        toolsCount: 16, 
         difficulty: 'متخصص',
         image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=250&fit=crop'
     },
@@ -86,13 +86,13 @@ const categories = [
         description: 'أدوات فحص وتحليل رسائل البريد الإلكتروني والمراسلات',
         icon: 'fas fa-envelope',
         color: '#5352ed',
-        toolsCount: 8, // مُحدّث من 6 إلى 8
+        toolsCount: 8, 
         difficulty: 'مبتدئ',
         image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=400&h=250&fit=crop'
     }
 ];
 
-// Tools Database
+
 const forensicsTools = [
     // Computer Forensics Tools
     {

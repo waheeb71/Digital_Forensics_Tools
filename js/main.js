@@ -1,7 +1,4 @@
 
-// ===== MAIN APPLICATION LOGIC - نسخة محدثة ومصححة =====
-
-// Global State
 let currentFilter = {
     category: '',
     license: '',
@@ -14,20 +11,19 @@ let itemsPerPage = 6;
 let isLoading = false;
 let allFilteredTools = [];
 
-// DOM Elements
 let navbar, navToggle, navMenu, loadingScreen, scrollToTopBtn;
 
-// Initialize Application
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-// Initialize App Function - مُصحح
+
 function initializeApp() {
     console.log('🚀 Initializing Digital Forensics Tools Website...');
     
     try {
-        // التحقق من وجود البيانات
+     
         if (typeof forensicsTools === 'undefined' || !forensicsTools) {
             console.error('❌ البيانات غير محملة بشكل صحيح');
             setTimeout(() => {
@@ -38,10 +34,9 @@ function initializeApp() {
             return;
         }
         
-        // Cache DOM elements
+       
         cacheDOMElements();
-        
-        // Initialize components
+       
         initializeNavigation();
         initializeLoadingScreen();
         initializeCounters();
@@ -49,14 +44,14 @@ function initializeApp() {
         initializeScrollEffects();
         initializeAnimations();
         
-        // Load content
+      
         loadCategories();
         loadFeaturedTools();
         
-        // Initialize intersection observer
+      
         initializeIntersectionObserver();
         
-        // إضافة عداد النتائج
+      
         addResultsCounter();
         
         console.log('✅ Application initialized successfully!');
@@ -66,7 +61,7 @@ function initializeApp() {
     }
 }
 
-// Cache DOM Elements
+
 function cacheDOMElements() {
     navbar = document.getElementById('navbar');
     navToggle = document.getElementById('nav-toggle');
@@ -75,7 +70,7 @@ function cacheDOMElements() {
     scrollToTopBtn = document.getElementById('scroll-to-top');
 }
 
-// إضافة عداد النتائج المفقود
+
 function addResultsCounter() {
     const toolsSection = document.getElementById('tools');
     if (toolsSection && !document.querySelector('.results-counter')) {
@@ -98,7 +93,7 @@ function addResultsCounter() {
     }
 }
 
-// Initialize Loading Screen
+
 function initializeLoadingScreen() {
     setTimeout(() => {
         if (loadingScreen) {
@@ -110,7 +105,7 @@ function initializeLoadingScreen() {
     }, 1500);
 }
 
-// Initialize Navigation
+
 function initializeNavigation() {
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', toggleMobileMenu);
@@ -124,7 +119,6 @@ function initializeNavigation() {
     window.addEventListener('scroll', handleNavbarScroll);
 }
 
-// Toggle Mobile Menu
 function toggleMobileMenu() {
     if (!navMenu || !navToggle) return;
     
@@ -148,7 +142,7 @@ function getHamburgerTransform(index) {
     return transforms[index] || 'none';
 }
 
-// Handle Navigation Click
+
 function handleNavClick(e) {
     e.preventDefault();
     
@@ -167,7 +161,7 @@ function handleNavClick(e) {
     }
 }
 
-// Handle Navbar Scroll
+
 function handleNavbarScroll() {
     if (!navbar) return;
     
@@ -192,7 +186,7 @@ function handleNavbarScroll() {
     }
 }
 
-// Initialize Counters Animation
+
 function initializeCounters() {
     const counters = document.querySelectorAll('.stat-number');
     
@@ -226,7 +220,7 @@ function initializeCounters() {
     });
 }
 
-// Initialize Search Functionality - مُحدث ومُصحح
+
 function initializeSearch() {
     const searchInput = document.getElementById('global-search');
     const categoryFilter = document.getElementById('category-filter');
@@ -248,27 +242,27 @@ function initializeSearch() {
     });
 }
 
-// Handle Search Input - مُحدث
+
 function handleSearch(e) {
     currentFilter.search = e.target.value.toLowerCase().trim();
     updateSearchSuggestions(e.target.value);
     resetPaginationAndFilter();
 }
 
-// Handle Filter Change - مُحدث
+
 function handleFilterChange(e) {
     const filterType = e.target.id.replace('-filter', '');
     currentFilter[filterType] = e.target.value;
     resetPaginationAndFilter();
 }
 
-// إعادة تعيين الصفحات والفلترة
+
 function resetPaginationAndFilter() {
     currentPage = 1;
     filterAndDisplayTools();
 }
 
-// Update Search Suggestions - مُحدث
+
 function updateSearchSuggestions(query) {
     const suggestions = document.getElementById('search-suggestions');
     
@@ -310,7 +304,7 @@ function updateSearchSuggestions(query) {
     }
 }
 
-// Select Search Suggestion
+
 function selectSuggestion(toolName) {
     const searchInput = document.getElementById('global-search');
     if (searchInput) {
@@ -335,7 +329,7 @@ function hideSearchSuggestions() {
     }
 }
 
-// Load Categories - مُحدث
+
 function loadCategories() {
     const categoriesGrid = document.getElementById('categories-grid');
     if (!categoriesGrid || !categories) return;
@@ -387,17 +381,17 @@ function loadCategories() {
     }
 }
 
-// Load Featured Tools - مُحدث ومُصحح
+
 function loadFeaturedTools() {
     const toolsGrid = document.getElementById('featured-tools');
     if (!toolsGrid || !forensicsTools) return;
     
     try {
-        // عرض أول 6 أدوات كأدوات مميزة
+       
         const featuredTools = forensicsTools.slice(0, 6);
         displayToolsInGrid(featuredTools, toolsGrid);
         
-        // تحديث عدد النتائج
+    
         updateResultsCounter(featuredTools.length);
         
     } catch (error) {
@@ -405,7 +399,7 @@ function loadFeaturedTools() {
     }
 }
 
-// عرض الأدوات في الشبكة - دالة مُحدثة
+
 function displayToolsInGrid(tools, container) {
     if (!tools || !container) return;
     
@@ -472,23 +466,23 @@ function displayToolsInGrid(tools, container) {
     container.innerHTML = toolCards;
 }
 
-// Filter and Display Tools - مُحدث ومُصحح
+
 function filterAndDisplayTools() {
     const toolsGrid = document.getElementById('featured-tools');
     if (!toolsGrid || !forensicsTools) return;
     
     try {
-        // تطبيق الفلاتر
+  
         let filteredTools = [...forensicsTools];
         
-        // فلتر التصنيف
+    
         if (currentFilter.category) {
             filteredTools = filteredTools.filter(tool => 
                 tool.category === currentFilter.category
             );
         }
         
-        // فلتر الترخيص
+    
         if (currentFilter.license) {
             filteredTools = filteredTools.filter(tool => {
                 const licenseType = getToolLicenseType(tool.type);
@@ -496,7 +490,7 @@ function filterAndDisplayTools() {
             });
         }
         
-        // فلتر المنصة
+   
         if (currentFilter.platform) {
             filteredTools = filteredTools.filter(tool => 
                 tool.platforms && tool.platforms.some(platform => 
@@ -505,7 +499,7 @@ function filterAndDisplayTools() {
             );
         }
         
-        // فلتر البحث
+   
         if (currentFilter.search) {
             filteredTools = filteredTools.filter(tool => 
                 tool.name.toLowerCase().includes(currentFilter.search) ||
@@ -516,10 +510,10 @@ function filterAndDisplayTools() {
             );
         }
         
-        // حفظ النتائج المفلترة
+     
         allFilteredTools = filteredTools;
         
-        // عرض النتائج مع التصفح
+   
         displayFilteredTools();
         
     } catch (error) {
@@ -527,12 +521,12 @@ function filterAndDisplayTools() {
     }
 }
 
-// عرض النتائج المفلترة - دالة جديدة
+
 function displayFilteredTools() {
     const toolsGrid = document.getElementById('featured-tools');
     if (!toolsGrid) return;
     
-    // حساب النتائج للصفحة الحالية
+   
     const startIndex = 0;
     const endIndex = currentPage * itemsPerPage;
     const toolsToDisplay = allFilteredTools.slice(startIndex, endIndex);
@@ -544,9 +538,9 @@ function displayFilteredTools() {
         return;
     }
     
-    // عرض الأدوات
+ 
     displayToolsInGrid(toolsToDisplay, toolsGrid);
-    // ✅ إظهار الكروت مباشرة بعد إضافتها (حل مشكلة الشاشة السوداء)
+   
 const cards = toolsGrid.querySelectorAll('.tool-card');
 cards.forEach(card => {
     card.style.opacity = '1';
@@ -554,14 +548,14 @@ cards.forEach(card => {
 });
 
     
-    // تحديث عداد النتائج
+   
     updateResultsCounter(allFilteredTools.length);
     
-    // إظهار/إخفاء زر "عرض المزيد"
+   
     toggleLoadMoreButton();
 }
 
-// عرض رسالة عدم وجود نتائج
+
 function showNoResultsMessage(container) {
     container.innerHTML = `
         <div class="no-results" style="
@@ -590,9 +584,9 @@ function showNoResultsMessage(container) {
     `;
 }
 
-// مسح جميع المرشحات
+
 function clearAllFilters() {
-    // إعادة تعيين المرشحات
+    
     currentFilter = {
         category: '',
         license: '',
@@ -600,7 +594,7 @@ function clearAllFilters() {
         search: ''
     };
     
-    // مسح قيم الإدخال
+   
     const searchInput = document.getElementById('global-search');
     if (searchInput) searchInput.value = '';
     
@@ -610,12 +604,12 @@ function clearAllFilters() {
         if (filter) filter.value = '';
     });
     
-    // إعادة تحميل الأدوات
+   
     currentPage = 1;
     loadFeaturedTools();
 }
 
-// تحديث عداد النتائج
+
 function updateResultsCounter(count) {
     const counter = document.getElementById('results-counter');
     if (counter) {
@@ -631,7 +625,7 @@ function updateResultsCounter(count) {
     }
 }
 
-// إظهار/إخفاء زر عرض المزيد
+
 function toggleLoadMoreButton() {
     const loadBtn = document.querySelector('.load-more-btn');
     if (!loadBtn) return;
@@ -646,7 +640,7 @@ function toggleLoadMoreButton() {
     }
 }
 
-// إخفاء زر عرض المزيد
+
 function hideLoadMoreButton() {
     const loadBtn = document.querySelector('.load-more-btn');
     if (loadBtn) {
@@ -654,7 +648,7 @@ function hideLoadMoreButton() {
     }
 }
 
-// دالة عرض المزيد - مُصححة
+
 window.loadMoreTools = function() {
     if (isLoading) return;
     
@@ -825,12 +819,12 @@ function generateStars(rating) {
         stars += '<i class="fas fa-star"></i>';
     }
     
-    // Half star
+
     if (hasHalfStar) {
         stars += '<i class="fas fa-star-half-alt"></i>';
     }
     
-    // Empty stars
+   
     for (let i = 0; i < emptyStars; i++) {
         stars += '<i class="far fa-star"></i>';
     }
@@ -838,7 +832,6 @@ function generateStars(rating) {
     return stars;
 }
 
-// Global Functions for HTML onclick events
 window.scrollToSection = function(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -853,14 +846,14 @@ window.scrollToSection = function(sectionId) {
     }
 };
 
-// تصدير الدوال للاستخدام العام
+
 window.exploreCategory = exploreCategory;
 
 window.loadMoreTools = loadMoreTools;
 window.selectSuggestion = selectSuggestion;
 window.clearAllFilters = clearAllFilters;
 
-// Initialize Scroll Effects
+
 function initializeScrollEffects() {
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener('click', () => {
@@ -871,7 +864,7 @@ function initializeScrollEffects() {
         });
     }
     
-    // Parallax effect for hero section
+   
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const parallax = document.querySelector('.hero-bg');
@@ -883,7 +876,7 @@ function initializeScrollEffects() {
     });
 }
 
-// Initialize Animations
+
 function initializeAnimations() {
     const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
     
@@ -905,7 +898,7 @@ function getInitialTransform(element) {
     }
 }
 
-// Initialize Intersection Observer
+
 function initializeIntersectionObserver() {
     const observerOptions = {
         threshold: 0.1,
@@ -922,13 +915,12 @@ function initializeIntersectionObserver() {
         });
     }, observerOptions);
     
-    // Observe elements
+    
     document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
         observer.observe(el);
     });
 }
 
-// Utility: Debounce function
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {

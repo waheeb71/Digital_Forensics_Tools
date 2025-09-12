@@ -1,4 +1,4 @@
-// ===== ADVANCED SEARCH FUNCTIONALITY =====
+
 
 class AdvancedSearch {
     constructor() {
@@ -19,7 +19,7 @@ class AdvancedSearch {
         this.loadSearchHistory();
     }
 
-    // Create search index for faster searching
+    
     createSearchIndex() {
         this.searchIndex = {
             tools: {},
@@ -28,7 +28,7 @@ class AdvancedSearch {
             features: {}
         };
 
-        // Index tools
+       
         forensicsTools.forEach(tool => {
             // Index by name
             const nameTokens = this.tokenize(tool.name);
@@ -38,11 +38,11 @@ class AdvancedSearch {
                 }
                 this.searchIndex.tools[token].push({
                     ...tool,
-                    relevance: 10 // High relevance for name matches
+                    relevance: 10 
                 });
             });
 
-            // Index by description
+          
             const descTokens = this.tokenize(tool.description);
             descTokens.forEach(token => {
                 if (!this.searchIndex.tools[token]) {
@@ -50,11 +50,11 @@ class AdvancedSearch {
                 }
                 this.searchIndex.tools[token].push({
                     ...tool,
-                    relevance: 5 // Medium relevance for description matches
+                    relevance: 5 
                 });
             });
 
-            // Index by tags
+           
             tool.tags.forEach(tag => {
                 const tagTokens = this.tokenize(tag);
                 tagTokens.forEach(token => {
@@ -63,12 +63,12 @@ class AdvancedSearch {
                     }
                     this.searchIndex.tags[token].push({
                         ...tool,
-                        relevance: 7 // High relevance for tag matches
+                        relevance: 7 
                     });
                 });
             });
 
-            // Index by features
+          
             tool.features.forEach(feature => {
                 const featureTokens = this.tokenize(feature);
                 featureTokens.forEach(token => {
@@ -77,13 +77,13 @@ class AdvancedSearch {
                     }
                     this.searchIndex.features[token].push({
                         ...tool,
-                        relevance: 6 // Good relevance for feature matches
+                        relevance: 6 
                     });
                 });
             });
         });
 
-        // Index categories
+     
         categories.forEach(category => {
             const nameTokens = this.tokenize(category.name);
             const descTokens = this.tokenize(category.description);
@@ -101,14 +101,14 @@ class AdvancedSearch {
         });
     }
 
-    // Tokenize text for search indexing
+   
     tokenize(text) {
         if (!text) return [];
         
         return text.toLowerCase()
-            .replace(/[^\u0600-\u06FFa-zA-Z0-9\s]/g, ' ') // Keep Arabic, English, numbers
+            .replace(/[^\u0600-\u06FFa-zA-Z0-9\s]/g, ' ') 
             .split(/\s+/)
-            .filter(token => token.length > 1) // Filter out single characters
+            .filter(token => token.length > 1)
             .map(token => token.trim());
     }
 
@@ -118,7 +118,7 @@ class AdvancedSearch {
         const searchSuggestions = document.getElementById('search-suggestions');
         
         if (searchInput) {
-            // Real-time search with debouncing
+          
             searchInput.addEventListener('input', this.debounce((e) => {
                 this.performSearch(e.target.value);
             }, 300));
