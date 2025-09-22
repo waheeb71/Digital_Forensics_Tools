@@ -189,18 +189,7 @@ a:hover {
   animation: slideDown 0.3s ease;
 }
 
-/* زر الإغلاق */
-.close-btn1 {
-  color: #333;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.close-btn1:hover {
-  color: #ff0000;
-}
 
 /* تحريك الصندوق */
 @keyframes slideDown {

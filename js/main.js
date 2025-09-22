@@ -740,7 +740,7 @@ function showToolDetails(toolId) {
     modal.style.display = 'block';
 
     // إغلاق عند الضغط على ×
-    const closeBtn = modal.querySelector('.close-btn');
+    const closeBtn = modal.querySelector('.close-btn1');
     closeBtn.onclick = () => { modal.style.display = 'none'; }
 
     // إغلاق عند الضغط خارج الصندوق
